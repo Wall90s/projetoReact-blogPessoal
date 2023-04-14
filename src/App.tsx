@@ -2,14 +2,22 @@ import './App.css'
 import Home from './paginas/home/Home';
 import Navbar from './components/estaticos/Navbar/Navbar';
 import Footer from './components/estaticos/Footer/Footer';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Login from './paginas/login/Login';
 
 function App() {
   return (
-    <>
-      <Navbar></Navbar>
-      <Home></Home>
-      <Footer></Footer>
-    </>
+    <BrowserRouter >
+      <Navbar />
+      <div style={{ minHeight: '100vh' }}>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/home" element={<Home />} />
+        </Routes>
+      </div>
+      <Footer />
+    </BrowserRouter >
   )
 }
 
