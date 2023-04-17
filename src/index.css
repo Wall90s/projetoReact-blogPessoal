@@ -1,8 +1,9 @@
 :root {
-    --green: #92e3a9;
-    --blue: #44CCFF;
-    --pink: #D56AA0;
-    --purple: #5941A9;
+--caribbean-current: #0d5c63ff;
+--teal: #247b7bff;
+--celadon: #92e3a9ff;
+--tea-rose-red: #e2b1b1ff;
+--mauve: #e2c2ffff;
 }
 
 * {
