@@ -1,3 +1,7 @@
 .bgColor {
     background-color: var(--tea-rose-red) !important;
 }
+
+Link {
+    color: white !important;
+}

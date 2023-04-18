@@ -15,9 +15,15 @@ function Navbar() {
                     <Toolbar >
                         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                             Blog Pessoal
-                            <Button color="inherit" style={{ marginLeft: '1rem' }}>início</Button>
-                            <Button color="inherit">postagens</Button>
-                            <Button color="inherit">temas</Button>
+                            <Link to={'/home'}>
+                                <Button color="inherit" style={{ marginLeft: '1rem' }}>início</Button>
+                            </Link>
+                            <Link to={'/posts'}>
+                                <Button color="inherit">postagens</Button>
+                            </Link>
+                            <Link to={'/temas'}>
+                                <Button color="inherit">temas</Button>
+                            </Link>
                             <Button color="inherit">cadastrar tema</Button>
                         </Typography>
                         <Link to='/login' >
