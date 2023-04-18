@@ -1,6 +1,7 @@
 import { Button, Grid, Typography } from '@material-ui/core'
 import './Home.css'
 import { Box } from '@mui/material'
+import TabPostagem from '../../components/postagens/tabPostagens/TabPostagem'
 
 function Home() {
     return (
@@ -21,7 +22,7 @@ function Home() {
                     <img src="https://ik.imagekit.io/wall90gifs/BlogPessoal/Playful_cat-cuate.svg?updatedAt=1681317495331" alt="" width="500px" height="500px" />
                 </Grid>
                 <Grid xs={12} className='postagens'>
-                    {/* <TabPostagem /> */}
+                    <TabPostagem />
                 </Grid>
             </Grid>
         </>
