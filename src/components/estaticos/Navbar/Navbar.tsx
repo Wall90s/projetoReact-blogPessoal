@@ -12,7 +12,7 @@ function Navbar() {
         <>
             <Box sx={{ flexGrow: 1 }}>
                 <AppBar position="static" className="bgColor">
-                    <Toolbar>
+                    <Toolbar >
                         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                             Blog Pessoal
                             <Button color="inherit" style={{ marginLeft: '1rem' }}>início</Button>
@@ -21,7 +21,7 @@ function Navbar() {
                             <Button color="inherit">cadastrar tema</Button>
                         </Typography>
                         <Link to='/login' >
-                            <Button type='submit' variant='outlined' style={{color: 'white', borderColor: 'var(--mauve)'}}>sair</Button>
+                            <Button type='submit' variant='outlined' style={{ color: 'white', borderColor: 'var(--mauve)' }}>sair</Button>
                         </Link>
                     </Toolbar>
                 </AppBar>
