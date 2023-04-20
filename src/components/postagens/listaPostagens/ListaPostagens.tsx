@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 
 function ListaPostagens() {
     return (
-        <Card sx={{ minWidth: 275 }} style={{ margin: '1% 2%' }}>
+        <Card sx={{ minWidth: 275 }} style={{ margin: '1% 2%', background: 'var(--tea-rose-red)', color: 'white'}}>
             <CardContent>
                 <Typography variant="h5" component="div">
                     Título
@@ -22,7 +22,7 @@ function ListaPostagens() {
             </CardContent>
             <CardActions>
                 <Button variant='contained' size="small">editar</Button>
-                <Button variant='outlined' color='error' size="small">deletar</Button>
+                <Button style={{color: 'red'}} color='error' variant='outlined' size="small">deletar</Button>
             </CardActions>
         </Card >
     )

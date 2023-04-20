@@ -17,7 +17,7 @@ function TabPostagem() {
 
     return (
         <TabContext value={value}>
-            <AppBar position="static">
+            <AppBar position="static" style={{ background: 'var(--tea-rose-red)'}}>
                 <TabList centered onChange={handleChange} aria-label="simple tabs example">
                     <Tab label="Postagens" value="1" />
                     <Tab label="Sobre mim" value="2" />

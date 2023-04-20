@@ -16,15 +16,15 @@ function Navbar() {
                         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                             Blog Pessoal
                             <Link to={'/home'}>
-                                <Button color="inherit" style={{ marginLeft: '1rem' }}>início</Button>
+                                <Button className='colorWhite' style={{ marginLeft: '1rem'}}>início</Button>
                             </Link>
                             <Link to={'/posts'}>
-                                <Button color="inherit">postagens</Button>
+                                <Button className='colorWhite'>postagens</Button>
                             </Link>
                             <Link to={'/temas'}>
-                                <Button color="inherit">temas</Button>
+                                <Button className='colorWhite' >temas</Button>
                             </Link>
-                            <Button color="inherit">cadastrar tema</Button>
+                            <Button className='colorWhite' >cadastrar tema</Button>
                         </Typography>
                         <Link to='/login' >
                             <Button type='submit' variant='outlined' style={{ color: 'white', borderColor: 'var(--mauve)' }}>sair</Button>

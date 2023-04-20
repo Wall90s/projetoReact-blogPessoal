@@ -19,7 +19,7 @@ function ListaTemas() {
             </CardContent>
             <CardActions>
                 <Button variant='contained' size="small">editar</Button>
-                <Button variant='outlined' color='error' size="small">deletar</Button>
+                <Button variant='outlined' style={{color: 'red'}} color='error' size="small">deletar</Button>
             </CardActions>
         </Card >
     )

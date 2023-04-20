@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;1,300;1,400&family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --caribbean-current: #0d5c63ff;
+    --teal: #247b7bff;
+    --celadon: #92e3a9ff;
+    --tea-rose-red: #e2b1b1ff;
+    --mauve: #e2c2ffff;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif !important;
+    font-family: 'Quicksand', sans-serif !important;
+    text-decoration: none !important;
+}
