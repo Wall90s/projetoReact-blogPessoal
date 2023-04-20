@@ -5,7 +5,7 @@ import Tab from '@material-ui/core/Tab';
 import TabContext from '@material-ui/lab/TabContext';
 import TabList from '@material-ui/lab/TabList';
 import TabPanel from '@material-ui/lab/TabPanel';
-import ListaPostagens from '../listaPostagens/ListaPostagens';
+import ListaPostagem from '../listaPostagens/ListaPostagem';
 import { Box, Grid } from '@material-ui/core';
 
 function TabPostagem() {
@@ -23,7 +23,7 @@ function TabPostagem() {
                     <Tab label="Sobre mim" value="2" />
                 </TabList>
             </AppBar>
-            <TabPanel value="1"><ListaPostagens /></TabPanel>
+            <TabPanel value="1"><ListaPostagem /></TabPanel>
             <TabPanel value="2">texto com o sobre</TabPanel>
         </TabContext>
     )

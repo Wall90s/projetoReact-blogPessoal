@@ -6,7 +6,7 @@ import Login from './paginas/login/Login';
 import CadastroUsuario from './paginas/cadastroUsuario/CadastroUsuario';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import ListaTemas from './components/temas/listaTemas/ListaTemas';
-import ListaPostagens from './components/postagens/listaPostagens/ListaPostagens';
+import ListaPostagem from './components/postagens/listaPostagens/ListaPostagem';
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/cadastro-usuario" element={<CadastroUsuario />} />
           <Route path='/temas' element={<ListaTemas/>}></Route>
-          <Route path='/posts' element={<ListaPostagens/>}></Route>
+          <Route path='/posts' element={<ListaPostagem/>}></Route>
         </Routes>
       </div>
       <Footer />
