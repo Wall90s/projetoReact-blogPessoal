@@ -48,7 +48,7 @@ function ListaTemas() {
                             </Typography>
                         </CardContent>
                         <CardActions>
-                            <Link to={`/atualizar-tema/${tema.id}`}>
+                            <Link to={`/formulario-tema/${tema.id}`}>
                                 <Button variant='contained' size="small">editar</Button>
                             </Link>
                             <Link to={`/deletar-tema/${tema.id}`}>
