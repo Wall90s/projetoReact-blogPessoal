@@ -1,14 +1,17 @@
 import React, { ChangeEvent, useEffect, useState } from 'react'
 import { Button, Container, TextField, Typography } from '@material-ui/core'
 import { useNavigate, useParams } from 'react-router-dom'
-import useLocalStorage from 'react-use-localstorage'
 import { Tema } from '../../../models/Tema'
 import { getId, post, put } from '../../../services/Service'
+import { useSelector } from 'react-redux'
+import { TokenState } from '../../../store/tokens/tokensReducer'
 
 function CadastroTema() {
     const history = useNavigate()
     const { id } = useParams<{ id: string }>()
-    const [token] = useLocalStorage('token')
+    const token = useSelector<TokenState, TokenState['token']>(
+        (state) => state.token
+    )
 
     const [tema, setTema] = useState<Tema>({
         id: 0,

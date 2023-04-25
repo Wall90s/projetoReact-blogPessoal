@@ -5,10 +5,19 @@ import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import { Typography, Grid } from '@material-ui/core';
 import { Box } from '@mui/material';
 import '../../../index.css'
+import { useSelector } from 'react-redux';
+import { TokenState } from '../../../store/tokens/tokensReducer';
 
 function Footer() {
-    return (
-        <>
+
+    const token = useSelector<TokenState, TokenState['token']>(
+        (state) => state.token
+    )
+
+    let footerComponent
+
+    if (token !== '') {
+        footerComponent =
             <Grid container direction="row" justifyContent="center" alignItems="center">
                 <Grid alignItems="center" item xs={12}>
                     <Box style={{ backgroundColor: 'var(--caribbean-current)', height: "120px" }}>
@@ -39,6 +48,11 @@ function Footer() {
                     </Box>
                 </Grid>
             </Grid>
+    }
+
+    return (
+        <>
+        {footerComponent}
         </>
     )
 }

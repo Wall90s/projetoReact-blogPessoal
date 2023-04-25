@@ -1,17 +1,20 @@
 import React, { ChangeEvent, useEffect, useState } from 'react'
 import { Container, Typography, TextField, FormControl, InputLabel, Select, FormHelperText, Button, MenuItem } from '@material-ui/core'
 import { useNavigate, useParams } from 'react-router-dom'
-import useLocalStorage from 'react-use-localstorage'
 import { Tema } from '../../../models/Tema'
 import { Postagem } from '../../../models/Postagem'
 import { put, post, getId } from '../../../services/Service'
 import { getAll } from '../../../services/Service'
+import { useSelector } from 'react-redux'
+import { TokenState } from '../../../store/tokens/tokensReducer'
 
 function CadastroPostagem() {
     const history = useNavigate()
     const { id } = useParams<{ id: string }>()
     const [temas, setTemas] = useState<Tema[]>([])
-    const [token] = useLocalStorage('token')
+    const token = useSelector<TokenState, TokenState['token']>(
+        (state) => state.token
+    )
 
     const [tema, setTema] = useState<Tema>({
         id: 0,
@@ -74,8 +77,9 @@ function CadastroPostagem() {
     async function onSubmit(event: ChangeEvent<HTMLFormElement>) {
         event.preventDefault()
         console.log(postagem)
-
+        
         if (id !== undefined) {
+            console.log(postagem)
             put(`/postagens`, postagem, setPostagem, {
                 headers: {
                     'Authorization': token
@@ -90,6 +94,7 @@ function CadastroPostagem() {
             })
             alert('Postagem cadastrada com sucesso');
         }
+        console.log(postagem)
         back()
 
     }

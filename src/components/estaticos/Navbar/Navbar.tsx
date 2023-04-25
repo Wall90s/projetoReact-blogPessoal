@@ -1,25 +1,33 @@
-import React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import { Link, useNavigate } from 'react-router-dom';
+import React from 'react'
+import AppBar from '@mui/material/AppBar'
+import Box from '@mui/material/Box'
+import Toolbar from '@mui/material/Toolbar'
+import Typography from '@mui/material/Typography'
+import Button from '@mui/material/Button'
+import { Link, useNavigate } from 'react-router-dom'
 import './Navbar.css'
-import useLocalStorage from 'react-use-localstorage';
+import { addToken } from '../../../store/tokens/action'
+import { useDispatch, useSelector } from 'react-redux'
+import { TokenState } from '../../../store/tokens/tokensReducer'
 
 function Navbar() {
-    const [token, setToken] = useLocalStorage('token')
     const history = useNavigate()
+    const dispatch = useDispatch()
+
+    const token = useSelector<TokenState, TokenState['token']>(
+        (state) => state.token
+    )
 
     function goLogout() {
-        setToken('')
+        dispatch(addToken(''))
         alert("Usuário deslogado")
         history('/login')
     }
 
-    return (
-        <>
+    let navbarComponent
+
+    if (token !== '') {
+        navbarComponent =
             <Box sx={{ flexGrow: 1 }}>
                 <AppBar position="static" className="bgColor">
                     <Toolbar >
@@ -42,6 +50,11 @@ function Navbar() {
                     </Toolbar>
                 </AppBar>
             </Box>
+    }
+
+    return (
+        <>
+            {navbarComponent}
         </>
     );
 }
