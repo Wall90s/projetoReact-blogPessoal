@@ -5,6 +5,7 @@ import { deleteId, getId } from '../../../services/Service'
 import { Tema } from '../../../models/Tema'
 import { useSelector } from 'react-redux'
 import { TokenState } from '../../../store/tokens/tokensReducer'
+import { toast } from 'react-toastify'
 
 function DeletarTema() {
     const history = useNavigate()
@@ -17,7 +18,16 @@ function DeletarTema() {
 
     useEffect(() => {
         if (token === '') {
-            alert('faça login para acessar essa página')
+            toast.error('faça login para acessar essa página', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: false,
+                progress: undefined,
+                theme: "colored"
+            })
             history('/login')
         }
     }, [token])
@@ -43,7 +53,16 @@ function DeletarTema() {
                 'Authorization': token
             }
         })
-        alert('Tema deletado com sucesso')
+        toast.success('tema deletado com sucesso', {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: false,
+            progress: undefined,
+            theme: "colored"
+        })
     }
 
     function voltarParaTemas() {

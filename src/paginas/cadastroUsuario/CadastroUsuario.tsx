@@ -5,6 +5,7 @@ import { Grid, Typography, Button, TextField } from '@material-ui/core';
 import { Box } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import './CadastroUsuario.css';
+import { toast } from 'react-toastify';
 
 function CadastroUsuario() {
     const history = useNavigate();
@@ -50,13 +51,39 @@ function CadastroUsuario() {
         if (confirmarSenha === user.senha) {
             try {
                 await cadastroUsuario(`/usuarios/cadastrar`, user, setUserResult)
-                alert('Usuário cadastrado com sucesso')
+                toast.success('usuário cadastrado com sucesso', {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: false,
+                    progress: undefined,
+                    theme: "colored"
+                })
             } catch (error) {
-                alert('Por favor, verifique os campos')
-                console.log(error)
+                toast.error('por favor verifique os campos', {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: false,
+                    progress: undefined,
+                    theme: "colored"
+                })
             }
         } else {
-            alert('Dados inconsistentes. Favor verificar as informações de cadastro.')
+            toast.error('dados inconsistentes. por favor verifique os campos', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: false,
+                progress: undefined,
+                theme: "colored"
+            })
         }
     }
 

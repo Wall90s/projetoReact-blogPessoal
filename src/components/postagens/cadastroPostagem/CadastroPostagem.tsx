@@ -7,6 +7,7 @@ import { put, post, getId } from '../../../services/Service'
 import { getAll } from '../../../services/Service'
 import { useSelector } from 'react-redux'
 import { TokenState } from '../../../store/tokens/tokensReducer'
+import { toast } from 'react-toastify'
 
 function CadastroPostagem() {
     const history = useNavigate()
@@ -30,26 +31,11 @@ function CadastroPostagem() {
     })
 
     useEffect(() => {
-        if (token === '') {
-            alert('faça login para acessar essa página')
-            history('/login')
-        }
-    }, [token])
-
-    useEffect(() => {
         setPostagem({
             ...postagem,
             tema: tema
         })
     }, [tema])
-
-    async function findByIdPostagem(id: string) {
-        await getId(`/postagens/${id}`, setPostagem, {
-            headers: {
-                'Authorization': token
-            }
-        })
-    }
 
     useEffect(() => {
         getTemas()
@@ -66,6 +52,30 @@ function CadastroPostagem() {
         })
     }
 
+    useEffect(() => {
+        if (token === '') {
+            toast.error('faça login para acessar essa página', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: false,
+                progress: undefined,
+                theme: "colored"
+            })
+            history('/login')
+        }
+    }, [token])
+
+    async function findByIdPostagem(id: string) {
+        await getId(`/postagens/${id}`, setPostagem, {
+            headers: {
+                'Authorization': token
+            }
+        })
+    }
+
     function updatedPostagem(event: ChangeEvent<HTMLInputElement>) {
         setPostagem({
             ...postagem,
@@ -75,32 +85,43 @@ function CadastroPostagem() {
     }
 
     async function onSubmit(event: ChangeEvent<HTMLFormElement>) {
-        event.preventDefault()
-        console.log(postagem)
-        
+        event.preventDefault();
+
         if (id !== undefined) {
-            console.log(postagem)
-            put(`/postagens`, postagem, setPostagem, {
+            await put('/postagens', postagem, setPostagem, {
                 headers: {
-                    'Authorization': token
-                }
+                    Authorization: token,
+                },
             })
-            alert('Postagem atualizada com sucesso');
+            toast.success('postagem atualizada com sucesso', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: false,
+                progress: undefined,
+                theme: "colored"
+            })
+            history('/posts')
         } else {
-            post(`/postagens`, postagem, setPostagem, {
+            await post('/postagens', postagem, setPostagem, {
                 headers: {
-                    'Authorization': token
-                }
+                    Authorization: token,
+                },
+            });
+            toast.success('postagem cadastrada com sucesso', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: false,
+                progress: undefined,
+                theme: "colored"
             })
-            alert('Postagem cadastrada com sucesso');
+            history('/posts')
         }
-        console.log(postagem)
-        back()
-
-    }
-
-    function back() {
-        history('/posts')
     }
 
     return (

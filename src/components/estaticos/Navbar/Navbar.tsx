@@ -1,14 +1,16 @@
 import React from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { addToken } from '../../../store/tokens/action'
+import { useDispatch, useSelector } from 'react-redux'
+import { TokenState } from '../../../store/tokens/tokensReducer'
+import { toast } from 'react-toastify'
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
-import { Link, useNavigate } from 'react-router-dom'
 import './Navbar.css'
-import { addToken } from '../../../store/tokens/action'
-import { useDispatch, useSelector } from 'react-redux'
-import { TokenState } from '../../../store/tokens/tokensReducer'
+
 
 function Navbar() {
     const history = useNavigate()
@@ -20,7 +22,16 @@ function Navbar() {
 
     function goLogout() {
         dispatch(addToken(''))
-        alert("Usuário deslogado")
+        toast.info('usuário deslogado', {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: false,
+            progress: undefined,
+            theme: "colored",
+        })
         history('/login')
     }
 

@@ -5,6 +5,7 @@ import { Tema } from '../../../models/Tema'
 import { getId, post, put } from '../../../services/Service'
 import { useSelector } from 'react-redux'
 import { TokenState } from '../../../store/tokens/tokensReducer'
+import { toast } from 'react-toastify'
 
 function CadastroTema() {
     const history = useNavigate()
@@ -20,7 +21,16 @@ function CadastroTema() {
 
     useEffect(() => {
         if (token === '') {
-            alert('faça login para acessar essa página')
+            toast.error('faça login para acessar essa página', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: false,
+                progress: undefined,
+                theme: "colored"
+            })
             history('/login')
         }
     }, [token])
@@ -50,26 +60,40 @@ function CadastroTema() {
         event.preventDefault()
 
         if (id !== undefined) {
-            put(`/temas`, tema, setTema, {
+            await put(`/temas`, tema, setTema, {
                 headers: {
                     'Authorization': token
                 }
             })
-            alert('Tema atualizado com sucesso');
+            toast.success('tema atualizado com sucesso', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: false,
+                progress: undefined,
+                theme: "colored"
+            })
+            history('/temas')
         } else {
-            post(`/temas`, tema, setTema, {
+            await post(`/temas`, tema, setTema, {
                 headers: {
                     'Authorization': token
                 }
             })
-            alert('Tema cadastrado com sucesso');
+            toast.success('tema cadastrado com sucesso', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: false,
+                progress: undefined,
+                theme: "colored"
+            })
+            history('/temas')
         }
-        back()
-
-    }
-
-    function back() {
-        history('/temas')
     }
 
     return (

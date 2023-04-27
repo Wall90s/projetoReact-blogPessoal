@@ -7,6 +7,7 @@ import UserLogin from '../../models/UserLogin'
 import { login } from '../../services/Service'
 import { useDispatch } from 'react-redux'
 import { addToken } from '../../store/tokens/action'
+import { toast } from 'react-toastify';
 
 function Login() {
     const history = useNavigate()
@@ -40,10 +41,27 @@ function Login() {
         event.preventDefault();
         try {
             await login(`/usuarios/logar`, userLogin, setToken)
-            alert('Usuário logado com sucesso');
-
+            toast.success('usuário logado com sucesso', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: false,
+                progress: undefined,
+                theme: "colored"
+            })
         } catch (error) {
-            alert('Usuário ou senha incorretos');
+            toast.error('usuário ou senha incorretos', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: false,
+                progress: undefined,
+                theme: "colored"
+            })
         }
     }
 

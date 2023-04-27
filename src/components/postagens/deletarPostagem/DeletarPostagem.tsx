@@ -6,6 +6,7 @@ import { Postagem } from '../../../models/Postagem'
 import { getId, deleteId } from '../../../services/Service'
 import { useSelector } from 'react-redux'
 import { TokenState } from '../../../store/tokens/tokensReducer'
+import { toast } from 'react-toastify'
 
 function DeletarPostagem() {
     const history = useNavigate()
@@ -18,7 +19,16 @@ function DeletarPostagem() {
 
     useEffect(() => {
         if (token === '') {
-            alert('faça login para acessar essa página')
+            toast.error('faça login para acessar essa página', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: false,
+                progress: undefined,
+                theme: "colored"
+            })
             history('/login')
         }
     }, [token])
@@ -44,7 +54,16 @@ function DeletarPostagem() {
                 'Authorization': token
             }
         })
-        alert('Postagem deletada com sucesso')
+        toast.success('postagem deletada com sucesso', {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: false,
+            progress: undefined,
+            theme: "colored"
+        })
     }
 
     function opcaoNao() {
